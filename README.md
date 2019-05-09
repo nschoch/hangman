@@ -1,0 +1,2 @@
+# hangman
+OdinProject Ruby Project
