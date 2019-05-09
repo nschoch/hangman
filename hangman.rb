@@ -6,9 +6,11 @@ class HangmanGame
     @save_file = 'hangman_save.yaml'
     @chances = 8
     @file_path = '5desk.txt'
-    @word = ''
     @letters_guessed = []
     load_save
+    if @word.nil?
+      @word = get_a_word
+    end
   end
 
   def save_to_yaml
@@ -66,12 +68,10 @@ class HangmanGame
   end
 
   def play
-    @word = get_a_word(5, 12)
-    chances = @chances
     display_status
 
     while @chances > 0
-      puts "Guess"
+      puts "Guess or quit & save by inputting 'CTRL+C'"
       guess = gets.chomp.upcase
       if guess.length > 1
         puts "You're guessing the word! #{guess}"
